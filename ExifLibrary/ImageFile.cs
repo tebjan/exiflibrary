@@ -109,7 +109,7 @@ namespace ExifLibrary
         /// <param name="stream">A stream to save image data to.</param>
         public virtual async Task SaveAsync(Stream stream)
         {
-            Save(stream);
+            await Task.Run(() => Save(stream));
         }
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace ExifLibrary
         /// <returns>The <see cref="ImageFile"/> created from the stream.</returns>
         public static async Task<ImageFile> FromStreamAsync(Stream stream, Encoding encoding)
         {
-            return FromStream(stream, encoding);
+            return await Task.Run(() => FromStream(stream, encoding));
         }
         #endregion
 

@@ -1,18 +1,15 @@
-[![License](http://img.shields.io/npm/l/xmlbuilder.svg?style=flat-square)](http://opensource.org/licenses/MIT)
-[![Nuget](https://img.shields.io/nuget/v/ExifLibNet.svg?style=flat-square)](https://www.nuget.org/packages/ExifLibNet)
+[![License](http://img.shields.io/npm/l/xmlbuilder.svg?style=flat-square)](http://opensource.org/licenses/MIT) [![Nuget](https://img.shields.io/nuget/v/ExifLibNet.Updated.svg?style=flat-square)](https://www.nuget.org/packages/ExifLibNet.Updated)
 
-[![Travis](https://img.shields.io/travis/oozcitak/exiflibrary.svg?style=flat-square)](https://travis-ci.org/oozcitak/exiflibrary)
-[![AppVeyor](https://img.shields.io/appveyor/ci/oozcitak/exiflibrary.svg?style=flat-square)](https://ci.appveyor.com/project/oozcitak/exiflibrary)
+This is an updated fork of ExifLibrary, a .Net Standard and .NET library for editing Exif metadata contained in image files.  
+It mainly removes the dependency on `netstandard1.3` to avoid pulling in loads of dependencies and has merged a PR for better DateTime parsing.
 
-ExifLibrary is a .Net Standard library for editing Exif metadata contained in image files.
+# Installation
 
-# Installation #
+If you are using [NuGet](https://nuget.org/) you can install it with:
 
-If you are using [NuGet](https://nuget.org/) you can install the assembly with:
+`PM> Install-Package ExifLibNet.Updated`
 
-`PM> Install-Package ExifLibNet`
-
-# Quick Start #
+# Quick Start
 
 To read an image file and extract metadata:
 
@@ -37,13 +34,18 @@ To add metadata:
 var file = ImageFile.FromFile("path_to_image");
 // note the explicit cast to ushort
 file.Properties.Set(ExifTag.ISOSpeedRatings, <ushort>200);
+
+//for pngs
+var pngText = new PngText(ExifTag.PNGTagName, ...)
+file.Properties.Set(pngText)
 ```
 
 To save the image with metadata:
+
 ```cs
 file.Save("path_to_image");
 ```
 
-# Documentation #
+# Documentation
 
 Please visit: http://oozcitak.github.io/exiflibrary/
